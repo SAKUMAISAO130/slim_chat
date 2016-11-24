@@ -5,7 +5,9 @@ php、Mysql、apacheインストール(http://qiita.com/knife0125/items/a2c0ede8
 httpd、mysqld自動起動設定(http://vdeep.net/vagrant-start-web-server、http://d.hatena.ne.jp/Michael_e29/20110922/1316696820)
 pearインストール(http://linuxserver.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/php/pear/pear%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 gitインストール
-laravelインストール
+
+
+laravelインストール(git clone https://github.com/laravel/laravel)
 composerインストール(http://qiita.com/CatCable/items/02364adacf36410f449e)
 composer.json編集後、laravelをビルド
 データベース作成(http://webkaru.net/mysql/mysql-root-password/)
@@ -41,6 +43,22 @@ vi /etc/httpd/conf.d/vhosts.conf
   </Directory>
 </VirtualHost>
 
+<VirtualHost *:80>
+  ServerAlias slim-thread.com
+  ServerName http://slim-thread.com
+  DirectoryIndex index.html index.php
+  AddDefaultCharset UTF-8
+  DocumentRoot /var/www/html/slim-thread.com
+    ErrorLog "/etc/httpd/logs/error_log_slim_thread"
+    CustomLog "/etc/httpd/logs/access_log_slim_thread" common
+
+  <Directory "/var/www/html/slim-thread.com">
+    AllowOverride All
+    Options FollowSymLinks -Indexes
+  </Directory>
+</VirtualHost>
+
+
  
 
 vi /etc/hosts
@@ -49,16 +67,27 @@ vi /etc/hosts
 ------------------------------------------------------------
 TOP表示確認、テストファイル実行(http://qiita.com/zaburo/items/839c81a1e166a48fe3fa)
 
+#################################################################
 
+#基本要件
 
-
-
+- 新規登録機能
+- ログイン機能
+- チャット機能
+- カテゴリ機能
 
 #################################################################
 
-テストマイグレーション
-テスト作成
+モデルmake
+テーブルマイグレーションmake
+テストmake(http://qiita.com/niisan-tokyo/items/264d4e8584ed58536bf4)
+コントローラーmake
+
+#################################################################
+
 テーブルマイグレーション
+テスト作成(※ついついローカルでテストしてしまいがちなので注意)
+ユニットテスト実行
 モデル作成
 コントローラー作成
 ビュー作成

@@ -1,7 +1,3 @@
-slim-chat.com/bootstrap/compiled.php
-slim-chat.com/vendor
-slim-chat.com/.env.*.php
-slim-chat.com/.env.php
 .DS_Store
 Thumbs.db
 
@@ -10,10 +6,9 @@ Thumbs.db
 /html
 /latex
 
+
 pdo.php
 index.html
-
-
 
 
 slim-chat.com/node_modules
@@ -23,4 +18,18 @@ slim-chat.com/vendor
 slim-chat.com/.idea
 slim-chat.com/Homestead.json
 slim-chat.com/Homestead.yaml
-slim-chat.com/.env
+slim-chat.com/bootstrap/compiled.php
+slim-chat.com/.env.*.php
+slim-chat.com/.env.php
+
+
+slim-thread.com/node_modules
+slim-thread.com/public/storage
+slim-thread.com/storage/*.key
+slim-thread.com/vendor
+slim-thread.com/.idea
+slim-thread.com/Homestead.json
+slim-thread.com/Homestead.yaml
+slim-thread.com/bootstrap/compiled.php
+slim-thread.com/.env.*.php
+slim-thread.com/.env.php

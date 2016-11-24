@@ -5,7 +5,7 @@ slim-chat.com/.env.php
 .DS_Store
 Thumbs.db
 
-Doxyfile
+
 /doxygen
 /html
 /latex

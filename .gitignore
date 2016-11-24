@@ -19,8 +19,8 @@ slim-chat.com/.idea
 slim-chat.com/Homestead.json
 slim-chat.com/Homestead.yaml
 slim-chat.com/bootstrap/compiled.php
-slim-chat.com/.env.*.php
-slim-chat.com/.env.php
+slim-chat.com/.env.*
+slim-chat.com/.env
 
 
 slim-thread.com/node_modules
@@ -31,5 +31,5 @@ slim-thread.com/.idea
 slim-thread.com/Homestead.json
 slim-thread.com/Homestead.yaml
 slim-thread.com/bootstrap/compiled.php
-slim-thread.com/.env.*.php
-slim-thread.com/.env.php
+slim-thread.com/.env.*
+slim-thread.com/.env

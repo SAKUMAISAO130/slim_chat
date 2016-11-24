@@ -1,0 +1,65 @@
+Vagrantファイル、HTMLファイルとindex.html、PDO.php配置
+vagrant構築（外部HTMLディレクトリ）
+php、Mysql、apacheインストール(http://qiita.com/knife0125/items/a2c0ede8097f9a7695cd)
+ドメイン確認、htmlフォルダ確認
+httpd、mysqld自動起動設定(http://vdeep.net/vagrant-start-web-server、http://d.hatena.ne.jp/Michael_e29/20110922/1316696820)
+pearインストール(http://linuxserver.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/php/pear/pear%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+gitインストール
+laravelインストール
+composerインストール(http://qiita.com/CatCable/items/02364adacf36410f449e)
+composer.json編集後、laravelをビルド
+データベース作成(http://webkaru.net/mysql/mysql-root-password/)
+データベース接続確認
+8080ポート開放(http://www.rickynews.com/blog/2014/05/28/thinking-about-apache-vhost/)
+ポート確認(http://itpro.nikkeibp.co.jp/article/COLUMN/20070124/259606/?rt=nocnt)
+appディレクトリに、doxygenファイル設置、設定確認後ビルド
+mac側のパーミッションも変更する
+
+バーチャルホスト設定
+------------------------------------------------------------
+vi /etc/httpd/conf.d/vhosts.conf
+
+<VirtualHost *:80>
+  ServerName http://dev.slim-chat.com
+  DirectoryIndex index.html index.php
+  AddDefaultCharset UTF-8
+  DocumentRoot /var/www/html/slim-chat.com/public
+  <Directory "/var/www/html/slim-chat.com/public">
+    AllowOverride All
+    Options FollowSymLinks -Indexes
+  </Directory>
+</VirtualHost>
+
+<VirtualHost *:8080>
+  ServerName http://dev.slim-chat.com
+  DirectoryIndex index.html index.php
+  AddDefaultCharset UTF-8
+  DocumentRoot /var/www/html/html
+  <Directory "/var/www/html/html">
+    AllowOverride All
+    Options FollowSymLinks -Indexes
+  </Directory>
+</VirtualHost>
+
+ 
+
+vi /etc/hosts
+
+192.168.33.100 dev.slim-chat.com doc.slim-chat.com
+------------------------------------------------------------
+TOP表示確認、テストファイル実行(http://qiita.com/zaburo/items/839c81a1e166a48fe3fa)
+
+
+
+
+
+
+#################################################################
+
+テストマイグレーション
+テスト作成
+テーブルマイグレーション
+モデル作成
+コントローラー作成
+ビュー作成
+ユニットテスト実行

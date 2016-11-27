@@ -18,3 +18,27 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+
+
+
+Route::get('/admin/login', function() {
+	$auth = Auth::guard('admin');
+	$credentials = [
+			'email' => 'admin1@example.com',
+			'password' => 'password',
+	];
+
+	return $auth->attempt($credentials) ? 'Admin Success' : 'Admin Failure';
+});
+
+	Route::get('/user/login', function() {
+		$auth = Auth::guard('user');
+		$credentials = [
+				'email' => 'user1@test.com',
+				'password' => 'password',
+		];
+
+		return $auth->attempt($credentials) ? 'User Success' : 'User Failure';
+});

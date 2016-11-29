@@ -2,7 +2,6 @@
 Thumbs.db
 
 
-/doxygen
 /html
 /latex
 
@@ -10,6 +9,7 @@ Thumbs.db
 pdo.php
 index.html
 
+@slim-chat.com
 
 slim-chat.com/node_modules
 slim-chat.com/public/storage

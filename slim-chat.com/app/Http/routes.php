@@ -47,3 +47,5 @@ Route::get('/', function () {
 		Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 		Route::post('password/reset', 'Auth\PasswordController@postReset');
 		
+		Route::get('/threads', 'ThreadsController@store');
+		

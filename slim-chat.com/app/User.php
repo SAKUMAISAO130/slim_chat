@@ -61,4 +61,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 		return ! empty($this->confirmed_at);
 	}
 	
+	public function thread(){
+		return $this->hasMany('App\Thead');
+	}
 }

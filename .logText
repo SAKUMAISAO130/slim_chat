@@ -1,3 +1,6 @@
+planUMLのplantuml.jarをインストールする（http://plantuml.com/download）
+doxygenインストール（http://kinokoru.jp/archives/399）
+
 Vagrantファイル、HTMLファイルとindex.html、PDO.php配置
 vagrant構築（外部HTMLディレクトリ）
 php、Mysql、apacheインストール(http://qiita.com/knife0125/items/a2c0ede8097f9a7695cd)

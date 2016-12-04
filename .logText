@@ -147,3 +147,88 @@ cat /etc/redhat-release
 php -v
 httpd -v
 mysql --version
+
+#################################################################
+http://help.blogdehp.jp/m/cat/fo_ki/images/checksheet.pdf
+フォームの入力
+１ 必要な入力項目がすべてあるか
+２ 必須項目は正しく設定されているか
+
+送信ボタン周辺の表示
+３ 送信ボタンの上下の文言は正しいか
+４ 送信ボタンの文言は正しいか
+
+フォーム送信後画面
+５ 送信完了画面は表示されるか
+６ 送信完了画面の内容は正しいか
+
+自動返信メール（利用している場合のみ）
+７ 自動返信メールは送られてきたか
+８ 自動返信メールの送信者名と送信メールアドレスは正しいか
+９ 自動返信メールの件名は正しいか
+10 自動返信メールの本文は正しいか
+
+通知メール
+11 通知メールは正しい宛先に送られてきたか
+12 通知メールの件名は正しいか
+13 フォームの分類名は正しいか
+
+顧客データ
+14 顧客データに登録されているか 
+
+#################################################################
+http://blog.enjoyxstudy.com/entry/20060817/p1
+
+
+#################################################################
+
+http://web-atelier-midori.com/blog/web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/1526/
+・閾値テスト　制限値を超えたテスト
+・記号チェック　テキスト入力して問題ないか(!”#$%&'()=~|\^-@:;,./)
+・削除、登録、関係ないところに影響ないか
+・レスポンスのチェック
+・エンコードする文字は文字化けしないか
+・GETパラメータ長さ制限チェック
+→　　ダミーテキストを入れてチェック
+http://webtools.dounokouno.com/dummytext/
+※GET日本語パラメータはUTF8でエンコードしているか
+・SQLインジェンクション対策はされているか
+・表示する際、エスケープ処理は考慮されているか
+
+
+
+
+#################################################################
+
+■Web アプリケーションのテストの方法とテスト・ツールのまとめ
+https://www.ibm.com/developerworks/jp/web/library/wa-webapptesting/
+
+■unoh.github.com by unoh
+https://unoh.github.io/2007/07/31/web_5.html
+
+■企業システム戦略の基礎知識（14）：ドキュメントレビューに役立つ40のチェックポイント (1/3) - ITmedia エンタープライズ
+http://www.itmedia.co.jp/im/articles/0512/27/news090.html
+
+■受け入れテスト用セキュリティチェックリスト for Webアプリケーション
+http://www.geocities.jp/ikepy0n/securitycheck.html
+
+■Webディレクターも押さえておきたいテストの基本ポイント | | モノづくりブログ - 株式会社8bit
+http://blog.8bit.co.jp/?p=4408
+
+■入力フォームに対するテスト項目 | | Webサービス | みどりのウェブ開発日記　Ajax jQuery PHP XHTML CSS の覚書
+http://web-atelier-midori.com/blog/web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/1526/
+
+■WEBシステムでの入力文字のテストについて - Enjoy*Study
+http://blog.enjoyxstudy.com/entry/20060817/p1
+
+■checksheet.pdf
+http://help.blogdehp.jp/m/cat/fo_ki/images/checksheet.pdf
+
+#################################################################
+
+sample todo
+https://github.com/jumilla/l4-sample-todo/blob/master/app/controllers/TodosController.php
+
+個々の機能
+http://laraweb.net/category/entering/page/3/
+http://laraweb.net/category/entering/page/3/

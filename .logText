@@ -235,3 +235,385 @@ http://laraweb.net/category/entering/page/3/
 フォーム制作のチェックリスト
 http://qiita.com/ponko2/items/fd7ac38b964e10f16f52
 http://laraweb.net/category/entering/page/3/
+
+
+
+#################################################################
+App\Post::all()->toArray();
+App\Post::where('id', '>', 1)->get()->toArray();
+App\Post::where('id', '>', 1)->orderBy('created_at', 'desc')->get()->toArray();
+App\Post::where('id', '>', 1)->take(1)->get()->toArray();
+$post = App\Post::find(3);
+$post->title = 'title 3 updated';
+$post->save();
+App\Post::all()->toArray();
+App\Post::find(3)->update(['title'=>'title 3 updated again']);
+App\Post::all()->toArray();
+$post = App\Post::find(3);
+$post->delete();
+App\Post::all()->toArray();
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+
+public function index() {
+  // $posts = \App\Post::all();
+  // $posts = Post::all();
+  // $posts = Post::orderBy('created_at', 'desc')->get();
+  $posts = Post::latest('created_at')->get();
+
+  dd($posts->toArray()); // dump die
+
+  return view('posts.index');
+}
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+
+
+<ul>
+  @forelse ($posts as $post)
+  <li><a href="">{{ $post->title }}</a></li>
+  @empty
+  <li>No posts yet</li>
+  @endforelse
+</ul>
+
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+    Route::get('/', 'PostsController@index');
+    Route::get('/posts/{id}', 'PostsController@show');
+
+
+
+
+    public function show($id) {
+      $post = Post::findOrFail($id);
+      return view('posts.show')->with('post', $post);
+    }
+
+
+
+<ul>
+  @forelse ($posts as $post)
+  <!-- <li><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></li> -->
+  <!-- <li><a href="{{ url('/posts', $post->id) }}">{{ $post->title }}</a></li> -->
+  <li><a href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></li>
+  @empty
+  <li>No posts yet</li>
+  @endforelse
+</ul>
+
+
+
+
+@section('content')
+<h1>{{ $post->title }}</h1>
+<p>{!! nl2br(e($post->body)) !!}</p>
+@endsection
+・・・・・・・・・・・・・・・・・・・・・・・・・
+
+
+
+<a href="{{ url('/') }}" class="pull-right fs12">Back</a>
+
+
+↓ルーティングの行の順番で処理順が重要であるということ
+
+動画内にて紹介しているルーティングの設定ですが、where を使って {id} が数値の場合のみ適用、とすれば（今回の場合は）書く順番を気にする必要はありません。
+Route::get('/posts/{id}', 'PostsController@show');
+↓以下のように変更
+Route::get('/posts/{id}', 'PostsController@show')
+    ->where('id', '[1-9][0-9]*');
+開発の規模が大きくなってくると記述する順番を気にするよりは、このようにwhereを使った方が良いでしょう。
+
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+
+登録
+
+    public function store(Request $request) {
+      $post = new Post();
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->save();
+      return redirect('/');
+    }
+
+
+
+
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+
+return redirect('/')->with('flash_message', 'Post Added!');
+
+
+  @if (session('flash_message'))
+  <div class="flash_message" onclick="this.classList.add('hidden')">{{ session('flash_message') }}</div>
+  @endif
+・・・・・・・・・・・・・・・・・・・・・・・・・
+バリデーション
+    public function store(Request $request) {
+      $this->validate($request, [
+        'title' => 'required|min:3',
+        'body' => 'required'
+      ]);
+      $post = new Post();
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->save();
+      return redirect('/')->with('flash_message', 'Post Added!');
+    }
+
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+oldヘルパー
+  <p>
+    <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
+    @if ($errors->has('title'))
+    <span class="error">{{ $errors->first('title') }}</span>
+    @endif
+  </p>
+・・・・・・・・・・・・・・・・・・・・・・・・・
+oldヘルパー第二引数にはoldがなかった場合の値を表示
+  <p>
+    <input type="text" name="title" placeholder="title" value="{{ old('title', $post->title) }}">
+    @if ($errors->has('title'))
+    <span class="error">{{ $errors->first('title') }}</span>
+    @endif
+  </p>
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+アップデートのメソッド（idが渡ってくる）
+
+Route::patch('/posts/{id}', 'PostsController@update');
+
+
+    public function update(PostRequest $request, $id) {
+      // $this->validate($request, [
+      //   'title' => 'required|min:3',
+      //   'body' => 'required'
+      // ]);
+      $post = Post::findOrFail($id);
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->save();
+      return redirect('/')->with('flash_message', 'Post Updated!');
+    }
+
+
+・・・・・・・・・・・・・・・・・・・・・・・・・
+php artisan make:request PostRequest
+/myblog/app/Http/Requests/PostRequest.php
+バリデーションの外部化
+
+
+
+namespace App\Http\Requests;
+
+use App\Http\Requests\Request;
+
+class PostRequest extends Request
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        // return false;
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+          'title' => 'required|min:3',
+          'body' => 'required'
+        ];
+    }
+}
+
+
+
+    public function store(PostRequest $request) {
+      // $this->validate($request, [
+      //   'title' => 'required|min:3',
+      //   'body' => 'required'
+      // ]);
+
+          public function update(PostRequest $request, $id) {
+・・・・・・・・・・・・・・・・・・・・・・・・・
+リンクに使う、各項目に紐付いたIDは、ループの中で出せば対応したものが出るのでそれを使う（$postの部分）
+
+  @forelse ($posts as $post)
+  <!-- <li><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></li> -->
+  <!-- <li><a href="{{ url('/posts', $post->id) }}">{{ $post->title }}</a></li> -->
+  <li><a href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></li>
+  @empty
+  <li>No posts yet</li>
+  @endforelse
+
+
+
+IDは引数で受け取れるので忘れずに、findでもいいが、見つからなかったとき例外を返したいのでfindOrFailを使う　
+public function show($id) {
+      $post = Post::findOrFail($id);
+      return view('posts.show')->with('post', $post);
+    }
+・・・・・・・・・・・・・・・・・・・・・・・・・
+・・・・・・・・・・・・・・・・・・・・・・・・・
+紐付けるマイグレーションは多少注意が必要
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateCommentsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('comments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('post_id')->unsigned();
+            $table->string('body');
+            $table->timestamps();
+
+
+ポストを消すと、そのIDも消えるやつ
+            $table->foreign('post_id')
+                  ->references('id')
+                  ->on('posts')
+                  ->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('comments');
+    }
+}
+・・・・・・・・・・・・・・・・・・・・・・・・・
+DBの紐付け
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Comment extends Model
+{
+    //
+    protected $fillable = ['body'];
+
+    // comment->post
+    public function post() {
+      return $this->belongsTo('App\Post');
+    }
+}
+
+
+
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    //
+    protected $fillable = ['title', 'body'];
+
+    public function comments() {
+      return $this->hasMany('App\Comment');
+    }
+}
+
+
+
+<h2>Comments</h2>
+<ul>
+  @forelse ($post->comments as $comment)
+  <li>{{ $comment->body }}</li>
+  @empty
+  <li>No comment yet</li>
+  @endforelse
+</ul>
+
+<h2>Add New Comment</h2>
+<form method="post" action="{{ action('CommentsController@store', $post->id) }}">
+  {{ csrf_field() }}
+  <p>
+    <input type="text" name="body" placeholder="body" value="{{ old('body') }}">
+    @if ($errors->has('body'))
+    <span class="error">{{ $errors->first('body') }}</span>
+    @endif
+  </p>
+  <p>
+    <input type="submit" value="Add Comment">
+  </p>
+</form>
+・・・・・・・・・・・・・・・・・・・・・・・・・
+紐付けたものの保存
+
+<form method="post" action="{{ action('CommentsController@store', $post->id) }}">
+
+※フォームが２つある時などは必要
+Route::post('/posts/{post}/comments', 'CommentsController@store');
+
+
+二つ目の引数が重要（名前はわかりやすければなんでもいい、どうせアクションの第二引数が取得できるだけだから）
+１つ目の引数もアクションの第一引数にアクション名を渡してPOSTすれば勝手に$requestが第一引数に渡ってくる
+あとはバリデーションして、値を撮ってモデルを作る
+    public function store(Request $request, $postId) {
+      $this->validate($request, [
+        'body' => 'required'
+      ]);
+
+      $comment = new Comment(['body' => $request->body]);
+      $post = Post::findOrFail($postId);
+      $post->comments()->save($comment);
+
+      return redirect()
+             ->action('PostsController@show', $post->id);
+    }
+・・・・・・・・・・・・・・・・・・・・・・・・・
+@forelseは
+findOrFailとリンクしている
+・・・・・・・・・・・・・・・・・・・・・・・・・
+・・・・・・・・・・・・・・・・・・・・・・・・・
+・・・・・・・・・・・・・・・・・・・・・・・・・
+・・・・・・・・・・・・・・・・・・・・・・・・・
+まずはdd();で内容を出してみる
+で、２つとも別のモデルオブジェクトを作ってしまえばいい
+それと他の人がどうやってリレーションさせているかgitをチェック
+
+・バケットと自分の差異を確認（GIT）
+・都道府県をどうやってだすのか、そしてだす（ORM）
+・フォームを揃える（HTML）
+・バリデーションを導入（オリジナルリクエストを通す）
+・各項目に保存する（それぞれに出力してみる、ORM、最悪個々に分ける）
+
+時間が余ればエラー、シーケンス系、フラッシュメッセージの永続化、保存のエクセプション（try,catch）
+
+
+
+
+
+
+
+

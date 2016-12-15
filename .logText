@@ -612,7 +612,7 @@ findOrFailとリンクしている
 
 テストデータはシーダーで生成してもよい
 
-
+////////////////////////////////////////////////////
 <?php
 
 // 例外処理
@@ -635,7 +635,49 @@ function div($a, $b) {
 div(7, 2);
 div(5, 0);
 
+////////////////////////////////////////////////////////////////////
+
+https://colo-ri.jp/develop/2008/04/seleniumjavascript.html
+http://d.hatena.ne.jp/nazoking/20070205/1170673230
+http://qiita.com/oh_rusty_nail/items/c59d4345d5372213128f
+http://iflaglabs.jp/original10.html
+http://qiita.com/gluelan2013/items/93730e4618bf490042b1
+
+
+https://blog.hello-world.jp.net/javascript/1961/
+
+
+<script type="text/javascript">
+var v = document.getElementsByTagName('body');
+var d = v[0].innerHTML;
+var m = d.match(/!--(.*)--/g);
+var c = m.length;
+m[0] = m[0].replace(/!--/g, "");
+m[0] = m[0].replace(/--/g, "");
+m[0] = m[0].replace(/ /g, "");
+console.log(m);
+</script>
+
+
+
+var v = document.getElementsByTagName('body');
+var d = v[0].innerHTML;
+var m = d.match(/--(.*)--/g);
+m[0] = m[0].replace(/!--/g, "");
+m[0] = m[0].replace(/--/g, "");
+m[0] = m[0].replace(/ /g, "");
+console.log(d);
 
 
 
 
+
+//////////////////////////////////
+var v = document.getElementsByTagName('body');
+var d = v[0].innerHTML;
+var m = d.match(/!--(.*)--/g);
+var c = m.length;
+m[0] = m[0].replace(/!--/g, "");
+m[0] = m[0].replace(/--/g, "");
+m[0] = m[0].replace(/ /g, "");
+console.log(m);

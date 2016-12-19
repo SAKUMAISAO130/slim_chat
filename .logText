@@ -720,3 +720,45 @@ http://labs.opentone.co.jp/?p=246
 http://qiita.com/flexfirm/items/ac5a2f53cfa933a37192
 
 
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" language="javascript">
+        document.getElementById('add').addEventListener('click', function() {
+            var greet = document.createElement('p'),
+                text = document.createTextNode('hello world');
+            document.body.appendChild(greet).appendChild(text);
+        });
+
+      function onButtonClick() {
+        check1 = document.form1.Checkbox1.checked;
+        check2 = document.form1.Checkbox2.checked;
+        check3 = document.form1.Checkbox3.checked;
+        check4 = document.form1.Checkbox4.checked;
+        if (check1 == true && check2 == true && check3 == true && check4 == true) {
+          document.getElementById('button').disabled = "";
+        console.log('true');
+        }else{
+          document.getElementById('button').disabled="disabled";
+        }
+      }
+    </script>
+</head>
+<body>
+  <form name="form1" action="">
+    <input id="Checkbox1" type="checkbox" checked /><br />
+    <input id="Checkbox2" type="checkbox" checked /><br />
+    <input id="Checkbox3" type="checkbox" checked /><br />
+    <input id="Checkbox4" type="checkbox" checked /><br />
+    <input type="button" value="Exec" onclick="onButtonClick();" />
+    <input id="button" type="submit" value="osu" disabled="disabled" />
+  </form>
+
+</body>
+</html>
+
+

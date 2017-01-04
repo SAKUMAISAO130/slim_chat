@@ -237,6 +237,62 @@ http://qiita.com/ponko2/items/fd7ac38b964e10f16f52
 http://laraweb.net/category/entering/page/3/
 
 
+///////////////////////////////////
+///////////////////////////////////
+///////////////////////////////////
+///////////////////////////////////
+
+■STEP2-4.ログイン機能をクラス化してみる / チームラボ オンラインスキルアップ課題
+https://team-lab.github.io/skillup/2/4.html
+
+■[STEP3] 開発したシステムをテストしよう！テスト工程を効率よく着実に進めるためのポイント - Windows女子部 - type IT Academy|転職＠type
+http://type.jp/s/itac/article23.html
+
+■誰にでも分かるSEのための文章術（11）：「バグ数には興味ないのだよ」――顧客が喜ぶテスト仕様書とは？ (2/2) - ＠IT
+http://www.atmarkit.co.jp/ait/articles/1007/21/news097_2.html
+
+■単体テストや結合テストの目的はバグがないことの証明ではない | wecoplus
+http://kabblog.net/1926/
+
+■結局、結合テストは何をすればいい？結合テスト仕様書作成の観点 | wecoplus
+http://kabblog.net/417/
+
+■テストの種類と技法 - Qiita
+http://qiita.com/ktarow/items/8c3d94d6c21a0c86b799
+
+■今夜わかる！テストケース作成手法 | geechs magazine
+https://geechs-magazine.com/tag/tech/20160114
+
+■テスト計画書 | 現役QAマネージャーのBlog
+https://qamanager300.wordpress.com/tag/%E3%83%86%E3%82%B9%E3%83%88%E8%A8%88%E7%94%BB%E6%9B%B8/
+
+■​【テストケース】入力フォームの考慮漏れしやすいところ | プログラマー見習いのブログ
+http://aprpg.jugem.jp/?eid=33
+
+■経験ゼロでもできるプログラミング現場の単体テスト - Qiita
+http://qiita.com/disc99/items/177bdf6352de463fdc87
+
+■unoh.github.com by unoh
+https://unoh.github.io/2007/07/31/web_5.html
+
+■入力フォームに対するテスト項目 | | Webサービス | みどりのウェブ開発日記　Ajax jQuery PHP XHTML CSS の覚書
+http://web-atelier-midori.com/blog/web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/1526/
+
+■WEBシステムでの入力文字のテストについて - Enjoy*Study
+http://blog.enjoyxstudy.com/entry/20060817/p1
+
+■フォーム セキュリティ テスト - Google 検索
+https://www.google.co.jp/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q=%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%20%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%E3%83%86%E3%82%B9%E3%83%88&oq=%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%20%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%80%80%E3%83%86%E3%82%B9%E3%83%88&aqs=chrome..69i57.10687j0j7
+
+■PHP開発エンジニア必読！最低限必要なセキュリティ対策 | Web制作会社スタイル
+http://www.hp-stylelink.com/news/2013/09/20130913.php#list03
+
+///////////////////////////////////
+///////////////////////////////////
+///////////////////////////////////
+///////////////////////////////////
+
+
 
 #################################################################
 App\Post::all()->toArray();
@@ -760,5 +816,8 @@ http://qiita.com/flexfirm/items/ac5a2f53cfa933a37192
 
 </body>
 </html>
+
+
+
 
 
